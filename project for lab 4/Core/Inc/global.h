@@ -35,7 +35,7 @@ extern uint8_t status;
 extern uint8_t status1;
 extern uint8_t command_flag;
 extern uint8_t ADC_value;
-extern uint8_t command[30];
+extern uint8_t command[3];
 extern uint8_t i;
 
 

@@ -17,7 +17,7 @@ uint8_t status;
 uint8_t status1;
 uint8_t command_flag = 0;
 uint8_t ADC_value = 0;
-uint8_t command[30];
+uint8_t command[3];
 uint8_t i;
 
 

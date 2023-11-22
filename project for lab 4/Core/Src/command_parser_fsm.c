@@ -9,6 +9,8 @@
 #include "command_parser_fsm.h"
 #include "global.h"
 #include "main.h"
+#include "timer.h"
+#include "uart_communication_fsm.h"
 
 
 
@@ -39,8 +41,8 @@ void command_parser_fsm(){
 		case PROCESS:
 			if (temp != '!' && temp != '#')
 			{
-				command[i] = temp;
-				i++;
+				command[i++] = temp;
+				// i++;
 			}
 			if (temp == '#')
 			{
@@ -53,6 +55,7 @@ void command_parser_fsm(){
 			{
 				command_flag = TRANSMIT;
 				setTimer1(10);
+
 			}
 			else if (check_OK(command) == 1)
 			{

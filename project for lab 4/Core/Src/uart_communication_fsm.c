@@ -11,6 +11,7 @@
 #include "global.h"
 #include "main.h"
 #include "timer.h"
+#include "uart_communication_fsm.h"
 
 
 void uart_communication_fsm(){
@@ -19,6 +20,7 @@ void uart_communication_fsm(){
 	{
 		//transmit value to console
 		case TRANSMIT:
+
 			if (timer1_flag == 1)
 			{
 				ADC_value = HAL_ADC_GetValue(&hadc1)*5/4096;
