@@ -20,6 +20,12 @@
 #define RECEIVE 11
 #define TRANSMIT 12
 #define END 13
+#define start 14
+#define finish1 15
+#define finish2 16
+#define COMMAND 17
+#define PROCESS 18
+
 
 extern uint8_t temp;
 extern uint8_t buffer[MAX_BUFFER_SIZE];
@@ -29,7 +35,8 @@ extern uint8_t status;
 extern uint8_t status1;
 extern uint8_t command_flag;
 extern uint8_t ADC_value;
-extern uint8_t str[12];
+extern uint8_t command[30];
+extern uint8_t i;
 
 
 #endif /* INC_GLOBAL_H_ */

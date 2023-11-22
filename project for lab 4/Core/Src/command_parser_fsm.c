@@ -12,78 +12,131 @@
 
 
 
-void command_parser_fsm()
-{
+// check if the message = RST or not
+int check_RST(uint8_t buffer[]){
+	if (buffer[0] == 'R' && buffer[1] == 'S' && buffer[2] == 'T'){
+		return 1;
+	}
+	else return 0;
+}
+// check if the message = OK or not
+int check_OK(uint8_t buffer[]){
+	if (buffer[0] == 'O' && buffer[1] == 'K'){
+		return 1;
+	}
+	else return 0;
+}
+
+void command_parser_fsm(){
 	switch(status)
 	{
 		case INIT:
-			if(buffer[index_buffer-1] == 'R')
+			if (temp == '!')
 			{
-				status = input_R;
-			}
-			if(buffer[index_buffer-1] == 'O')
-			{
-				status = end_O;
-			}
-			if(buffer[index_buffer-1] != 'R' && buffer[index_buffer-1] != 'O')
-			{
-				status = INIT;
+				status = PROCESS;
 			}
 			break;
-		case input_R:
-			if(buffer[index_buffer-1] == 'R')
+		case PROCESS:
+			if (temp != '!' && temp != '#')
 			{
-				status = input_R;
+				command[i] = temp;
 			}
-			if(buffer[index_buffer-1] == 'S')
+			if (temp == '#')
 			{
-				status = input_S;
-			}
-			if(buffer[index_buffer-1]!= 'R' && buffer[index_buffer-1]!= 'S')
-			{
-				status = INIT;
+				i = 0;
+				status = COMMAND;
 			}
 			break;
-		case input_S:
-			if(buffer[index_buffer-1] == 'S')
+		case COMMAND:
+			if (check_RST(command) == 1)
 			{
-				status = INIT;
+				command_flag = TRANSMIT;
+				setTimer1(10);
 			}
-			if(buffer[index_buffer-1] == 'T')
+			else if (check_OK(command) == 1)
 			{
-				status = input_T;
+				command_flag = END;
 			}
-			if(buffer[index_buffer-1] != 'T')
-			{
-				status = INIT;
-			}
+			status  = INIT;
 			break;
-		case input_T:
-			command_flag = 1;
-			status = INIT;
-			break;
-
-		case end_O:
-			if(buffer[index_buffer-1] == 'O')
-			{
-				status = end_O;
-			}
-			if(buffer[index_buffer-1] == 'K')
-			{
-				status = end_K;
-			}
-			if(buffer[index_buffer-1]!= 'O' && buffer[index_buffer-1]!= 'K')
-			{
-				status = INIT;
-			}
-			break;
-		case end_K:
-			command_flag = 2;
-			status = INIT;
-			break;
-
-		default:
-			break;
-
 	}
 }
+
+
+//void command_parser_fsm()
+//{
+//	switch(status)
+//	{
+//		case INIT:
+//			if(buffer[index_buffer-1] == 'R')
+//			{
+//				status = input_R;
+//			}
+//			if(buffer[index_buffer-1] == 'O')
+//			{
+//				status = end_O;
+//			}
+//			if(buffer[index_buffer-1] != 'R' && buffer[index_buffer-1] != 'O')
+//			{
+//				status = INIT;
+//			}
+//			break;
+//		case input_R:
+//			if(buffer[index_buffer-1] == 'R')
+//			{
+//				status = input_R;
+//			}
+//			if(buffer[index_buffer-1] == 'S')
+//			{
+//				status = input_S;
+//			}
+//			if(buffer[index_buffer-1]!= 'R' && buffer[index_buffer-1]!= 'S')
+//			{
+//				status = INIT;
+//			}
+//			break;
+//		case input_S:
+//			if(buffer[index_buffer-1] == 'S')
+//			{
+//				status = INIT;
+//			}
+//			if(buffer[index_buffer-1] == 'T')
+//			{
+//				status = input_T;
+//			}
+//			if(buffer[index_buffer-1] != 'T')
+//			{
+//				status = INIT;
+//			}
+//			break;
+//		case input_T:
+//			command_flag = 1;
+//			status = INIT;
+//			break;
+//
+//		case end_O:
+//			if(buffer[index_buffer-1] == 'O')
+//			{
+//				status = end_O;
+//			}
+//			if(buffer[index_buffer-1] == 'K')
+//			{
+//				status = end_K;
+//			}
+//			if(buffer[index_buffer-1]!= 'O' && buffer[index_buffer-1]!= 'K')
+//			{
+//				status = INIT;
+//			}
+//			break;
+//		case end_K:
+//			command_flag = 2;
+//			status = INIT;
+//			break;
+//
+//		default:
+//			break;
+//
+//	}
+//}
+
+

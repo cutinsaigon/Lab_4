@@ -24,6 +24,7 @@
 #include "global.h"
 #include "command_parser_fsm.h"
 #include "uart_communication_fsm.h"
+#include "timer.h"
 
 
 /* Private includes ----------------------------------------------------------*/
@@ -121,10 +122,16 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   status = INIT;
-  status1 = RECEIVE;
+//  status1 = RECEIVE;
+  setTimer2(2000);
   while (1)
   {
     /* USER CODE END WHILE */
+
+	  if(timer2_flag == 1)
+	  {
+		  HAL_GPIO_TogglePin (LED_RED_GPIO_Port, LED_RED_Pin);
+	  }
 	  if(buffer_flag == 1)
 	  {
 		  command_parser_fsm();
