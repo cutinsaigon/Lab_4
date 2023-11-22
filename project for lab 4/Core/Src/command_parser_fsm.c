@@ -40,6 +40,7 @@ void command_parser_fsm(){
 			if (temp != '!' && temp != '#')
 			{
 				command[i] = temp;
+				i++;
 			}
 			if (temp == '#')
 			{
