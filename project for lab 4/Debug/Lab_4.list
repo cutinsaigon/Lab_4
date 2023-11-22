@@ -29,21 +29,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
  12 .debug_info   00012e6d  00000000  00000000  00020099  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 000027dc  00000000  00000000  00032f06  2**0
+ 13 .debug_abbrev 000027da  00000000  00000000  00032f06  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 00000dd0  00000000  00000000  000356e8  2**3
+ 14 .debug_aranges 00000dd0  00000000  00000000  000356e0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_ranges 00000cc0  00000000  00000000  000364b8  2**3
+ 15 .debug_ranges 00000cc0  00000000  00000000  000364b0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  0001939f  00000000  00000000  00037178  2**0
+ 16 .debug_macro  0001939f  00000000  00000000  00037170  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00010e0d  00000000  00000000  00050517  2**0
+ 17 .debug_line   00010e0d  00000000  00000000  0005050f  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    0008db45  00000000  00000000  00061324  2**0
+ 18 .debug_str    0008db45  00000000  00000000  0006131c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000eee69  2**0
+ 19 .comment      00000053  00000000  00000000  000eee61  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00003c34  00000000  00000000  000eeebc  2**2
+ 20 .debug_frame  00003c34  00000000  00000000  000eeeb4  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1682,7 +1682,7 @@ void uart_communication_fsm(){
  800097a:	b08e      	sub	sp, #56	; 0x38
  800097c:	af00      	add	r7, sp, #0
 	char str[50];
-	switch(command_flag){
+	switch(command_flag)
  800097e:	4b1b      	ldr	r3, [pc, #108]	; (80009ec <uart_communication_fsm+0x74>)
  8000980:	781b      	ldrb	r3, [r3, #0]
  8000982:	2b0c      	cmp	r3, #12
@@ -1696,7 +1696,7 @@ void uart_communication_fsm(){
 	}
 }
  800098a:	e02b      	b.n	80009e4 <uart_communication_fsm+0x6c>
-			if (timer1_flag == 1){
+			if (timer1_flag == 1)
  800098c:	4b18      	ldr	r3, [pc, #96]	; (80009f0 <uart_communication_fsm+0x78>)
  800098e:	681b      	ldr	r3, [r3, #0]
  8000990:	2b01      	cmp	r3, #1
