@@ -1713,7 +1713,7 @@ void uart_communication_fsm()
  80009ae:	d002      	beq.n	80009b6 <uart_communication_fsm+0x1a>
  80009b0:	2b0c      	cmp	r3, #12
  80009b2:	d016      	beq.n	80009e2 <uart_communication_fsm+0x46>
-
+                command_flag = 0;
             }
             break;
 
@@ -1782,13 +1782,13 @@ void uart_communication_fsm()
  8000a20:	781b      	ldrb	r3, [r3, #0]
  8000a22:	2b01      	cmp	r3, #1
  8000a24:	d10a      	bne.n	8000a3c <uart_communication_fsm+0xa0>
-                command_flag = 0;
- 8000a26:	4b08      	ldr	r3, [pc, #32]	; (8000a48 <uart_communication_fsm+0xac>)
- 8000a28:	2200      	movs	r2, #0
- 8000a2a:	701a      	strb	r2, [r3, #0]
                 status1 = IDLE;
- 8000a2c:	4b05      	ldr	r3, [pc, #20]	; (8000a44 <uart_communication_fsm+0xa8>)
- 8000a2e:	220b      	movs	r2, #11
+ 8000a26:	4b07      	ldr	r3, [pc, #28]	; (8000a44 <uart_communication_fsm+0xa8>)
+ 8000a28:	220b      	movs	r2, #11
+ 8000a2a:	701a      	strb	r2, [r3, #0]
+                command_flag = 0;
+ 8000a2c:	4b06      	ldr	r3, [pc, #24]	; (8000a48 <uart_communication_fsm+0xac>)
+ 8000a2e:	2200      	movs	r2, #0
  8000a30:	701a      	strb	r2, [r3, #0]
             break;
  8000a32:	e003      	b.n	8000a3c <uart_communication_fsm+0xa0>

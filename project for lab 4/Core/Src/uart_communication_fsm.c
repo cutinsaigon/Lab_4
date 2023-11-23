@@ -30,7 +30,6 @@ void uart_communication_fsm()
                 status1 = TRANSMIT;
                 command_flag = 0;
             }
-
             break;
         //Transmitted message "ADC_value"
         case TRANSMIT:
@@ -47,9 +46,8 @@ void uart_communication_fsm()
             }
             if(command_flag == 1)
             {
-                command_flag = 0;
                 status1 = IDLE;
-
+                command_flag = 0;
             }
             break;
 
