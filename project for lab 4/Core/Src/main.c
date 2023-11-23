@@ -75,7 +75,8 @@ void HAL_UART_RxCpltCallback ( UART_HandleTypeDef *huart )
 	 if(huart->Instance == USART2)
 	 {
 		 HAL_UART_Transmit (&huart2 , &temp , 1, 50);
-		 buffer[index_buffer++] = temp;
+		 buffer[index_buffer] = temp;
+		 index_buffer++;
 		 if(index_buffer == 30) index_buffer = 0;
 		 	 buffer_flag = 1;
 
@@ -118,13 +119,14 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_UART_Receive_IT (&huart2 , &temp , 1);
   HAL_ADC_Start(&hadc1);
+  HAL_TIM_Base_Start_IT(&htim2);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  status = INIT;
+  // status = INIT;
 //  status1 = RECEIVE;
-  setTimer2(2000);
+  setTimer2(1000);
   while (1)
   {
     /* USER CODE END WHILE */
@@ -132,6 +134,7 @@ int main(void)
 	  if(timer2_flag == 1)
 	  {
 		  HAL_GPIO_TogglePin (LED_RED_GPIO_Port, LED_RED_Pin);
+		  setTimer2(1000);
 	  }
 	  if(buffer_flag == 1)
 	  {
