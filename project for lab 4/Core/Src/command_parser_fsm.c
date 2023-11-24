@@ -50,26 +50,74 @@ void command_parser_fsm(){
 			{
 				command[i] = temp;
 				i++;
+				if (check_RST(command) == 1)
+				{
+					status = End;
+
+				}
+				else if (check_OK(command) == 1)
+				{
+					status = End;
+
+				}
+
 			}
+			break;
+
+		case End:
 			if (temp == '#')
 			{
+				command_flag = 1;
 				i = 0;
-				status = COMMAND;
+				status = INIT;
 			}
 			break;
-		case COMMAND:
-			if (check_RST(command) == 1)
-			{
-				command_flag = 1;
-			}
-			else if (check_OK(command) == 1)
-			{
-				command_flag = 1;
-			}
-			status  = INIT;
-			break;
+
 	}
 }
+
+//void command_parser_fsm(){
+//	switch(status)
+//	{
+//		case INIT:
+//			if (temp == '!')
+//			{
+//				status = PROCESS;
+//			}
+//			else
+//				status = INIT;
+//			break;
+//
+//		case PROCESS:
+//			if	(temp == '!')
+//			{
+//				status = PROCESS;
+//			}
+//			if (temp != '!' && temp != '#')
+//			{
+//				command[i] = temp;
+//				i++;
+//			}
+//			if (temp == '#')
+//			{
+//				i = 0;
+//				status = COMMAND;
+//			}
+//			break;
+//		case COMMAND:
+//			if (check_RST(command) == 1)
+//			{
+//				command_flag = 1;
+//			}
+//			else if (check_OK(command) == 1)
+//			{
+//				command_flag = 1;
+//			}
+//
+//			status  = INIT;
+//			break;
+//	}
+//}
 
 
 

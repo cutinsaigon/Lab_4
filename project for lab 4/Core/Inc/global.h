@@ -14,6 +14,7 @@
 #define INIT	1
 #define PROCESS 2
 #define COMMAND 3
+#define End		4
 
 #define IDLE 11
 #define TRANSMIT 12

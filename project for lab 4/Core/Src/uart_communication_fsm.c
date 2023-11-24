@@ -33,7 +33,7 @@ void uart_communication_fsm()
             break;
         //Transmitted message "ADC_value"
         case TRANSMIT:
-            HAL_UART_Transmit(&huart2, (void *)str, sprintf(str, "ADC value = %d\r\n", ADC_value), 1000);
+            HAL_UART_Transmit(&huart2, (void *)str, sprintf(str, "\n ADC value = %d\r\n", ADC_value), 1000);
             setTimer1(3000);
             status1 = END;
             break;
@@ -44,10 +44,11 @@ void uart_communication_fsm()
             {
                 status1 = TRANSMIT;
             }
+
             if(command_flag == 1)
             {
+            	command_flag = 0;
                 status1 = IDLE;
-                command_flag = 0;
             }
             break;
 
