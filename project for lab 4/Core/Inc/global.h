@@ -14,7 +14,8 @@
 #define INIT	1
 #define PROCESS 2
 #define COMMAND 3
-#define End		4
+#define Start	4
+#define End		5
 
 #define IDLE 11
 #define TRANSMIT 12
@@ -34,6 +35,8 @@ extern uint8_t command_flag;
 extern uint8_t ADC_value;
 extern uint8_t command[5];
 extern uint8_t i;
+extern uint8_t index_data;
+extern char data[5];
 
 
 #endif /* INC_GLOBAL_H_ */

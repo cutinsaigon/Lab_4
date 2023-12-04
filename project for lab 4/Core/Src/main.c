@@ -146,7 +146,10 @@ int main(void)
   }
   /* USER CODE END 3 */
 }
-
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+	timer_run();
+}
 
 /**
   * @brief System Clock Configuration

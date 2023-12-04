@@ -1,3 +1,1 @@
-command_parser_fsm.c:18:5:check_RST	16	static
-command_parser_fsm.c:25:5:check_OK	16	static
-command_parser_fsm.c:32:6:command_parser_fsm	8	static
+command_parser_fsm.c:20:6:command_parser_fsm	16	static

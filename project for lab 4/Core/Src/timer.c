@@ -9,10 +9,7 @@
 
 #define TICK 10
 
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-	timer_run();
-}
+
 
 int timer1_flag = 0;
 int timer1_counter = 0;

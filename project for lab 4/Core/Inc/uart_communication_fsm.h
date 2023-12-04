@@ -11,5 +11,6 @@
 #include "global.h"
 
 void uart_communication_fsm();
+int isStringEqual(const char *str1, const char *str2);
 
 #endif /* INC_UART_COMMUNICATION_FSM_H_ */

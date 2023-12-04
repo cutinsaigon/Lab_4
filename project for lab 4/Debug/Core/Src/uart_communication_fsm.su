@@ -1,1 +1,2 @@
-uart_communication_fsm.c:21:6:uart_communication_fsm	8	static
+uart_communication_fsm.c:18:5:isStringEqual	16	static
+uart_communication_fsm.c:32:6:uart_communication_fsm	8	static
